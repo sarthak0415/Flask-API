@@ -2,7 +2,7 @@ from sqlalchemy import Integer, String
 from sqlalchemy_utils import EmailType
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+from src.db.database import db
 
 class User(db.Model):
     """
