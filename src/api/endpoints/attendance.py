@@ -1,14 +1,23 @@
 from flask_restful import Resource
-from flask import jsonify
+from flask import jsonify, request, abort
 import boto3
-from marshmallow import Schema, fields, ValidationError
+from marshmallow import ValidationError
+from src.validator.attendance import BaseSchema
 
 
 class Attendance(Resource):
 
-    def get(self):
-        dynamo_client = boto3.client('dynamodb')
+    def post(self):
+        #retrieving request
+        request_data = request.json
 
+        #input validations
+        schema = BaseSchema()
+        errors = schema.validate(request_data)
+        if errors:
+            abort(400, errors)
+
+        dynamo_client = boto3.client('dynamodb')
 
         db_entry = {
             "coordinates": [
@@ -48,6 +57,3 @@ class Attendance(Resource):
             },
         )
         return jsonify(response)
-
-    def post(self):
-        pass

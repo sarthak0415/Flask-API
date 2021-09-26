@@ -4,7 +4,7 @@ from src.db.models.attendance import Attendance
 
 class Test(Resource):
 
-    def get(self, Req):
+    def get(self):
         user = Attendance(1, '2021-09-25')
         user.is_marked = True
         user.save()
