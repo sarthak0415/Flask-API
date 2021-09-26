@@ -5,6 +5,7 @@ from flask import Flask
 from src.config.setting import settings
 from src.api.index import api
 from src.db.database import db
+from flask_jwt_extended import JWTManager
 
 # Flask App Initialization
 app = Flask(__name__)
@@ -35,6 +36,9 @@ def connect(app):
     # Fetch Settings
     app.config.from_object(settings[os.environ.get('APPLICATION_ENV', 'default')])
 
+    # Add jwt secret key
+    app.config['JWT_SECRET_KEY'] = '@kj=zn8z-u2zh5x1xp5b&i9!uiiz0s_okv-i1p4atzj#l#58@='
+
     # Logs Initialization
     console = logging.getLogger('console')
 
@@ -46,3 +50,5 @@ def connect(app):
 
 # Run the connect function to init app
 connect(app)
+
+jwt = JWTManager(app)
