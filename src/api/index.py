@@ -1,6 +1,6 @@
 from flask_restful import Api
 from src.api.endpoints.test import Test
-from src.api.endpoints.attendance import FaceRecognition
+from src.api.endpoints.attendance import Attendance
 
 # Flask API Configuration
 api = Api(
@@ -9,6 +9,5 @@ api = Api(
 )
 
 api.add_resource(Test, '/')
-api.add_resource(FaceRecognition, '/face')
-#api.add_resource(BoundingBox, '/bounding-box')
+api.add_resource(Attendance, '/attendance')
 

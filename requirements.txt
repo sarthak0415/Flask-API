@@ -9,8 +9,11 @@ Flask-Script==2.0.6
 Flask-SQLAlchemy==2.4.4
 psycopg2-binary==2.8.6
 pydantic==1.6.1
+pynamodb==5.1.0
 sqlalchemy < 1.4.0
 SQLAlchemy-i18n==1.0.3
 SQLAlchemy-Utils==0.36.8
 Werkzeug==1.0.1
 boto3==1.18.44
+turfpy==0.0.7
+geojson==2.5.0

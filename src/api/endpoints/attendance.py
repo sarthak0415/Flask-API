@@ -1,11 +1,25 @@
 from flask_restful import Resource
 from flask import jsonify
 import boto3
+from marshmallow import Schema, fields, ValidationError
 
 
-class FaceRecognition(Resource):
+class Attendance(Resource):
 
     def get(self):
+        dynamo_client = boto3.client('dynamodb')
+
+
+        db_entry = {
+            "coordinates": [
+                [
+                    [2.38, 57.322],
+                    [23.194, -20.28],
+                    [-120.43, 19.15],
+                    [2.38, 57.322]
+                ]
+            ]
+        }
         s3_client = boto3.client(
             's3',
             aws_access_key_id='AKIA3LYDTWN6IACBP2W5',
